@@ -1,6 +1,6 @@
 # Reserviox
 
-Reserviox is a Java-based application designed to streamline the process of advertising and booking services. Built with Spring Boot and Maven, this project aims to provide a robust platform for companies to post ads and for clients to find and book these services efficiently.
+Reserviox is a Java-based hobby application designed to streamline the process of advertising and booking services. Built with Spring Boot and Maven, this project aims to provide a robust platform for companies to post ads and for clients to find and book these services efficiently.
 
 ## Features
 
