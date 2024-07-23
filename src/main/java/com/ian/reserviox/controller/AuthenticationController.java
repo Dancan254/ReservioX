@@ -36,7 +36,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(authService.signupClient(signupRequestDto));
     }
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) {
         try {
             String jwt = authService.authenticateUser(authenticationRequest);
