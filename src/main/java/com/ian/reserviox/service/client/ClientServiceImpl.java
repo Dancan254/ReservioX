@@ -6,6 +6,7 @@ import com.ian.reserviox.repository.AdRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 @Service
 public class ClientServiceImpl implements ClientService{
@@ -18,5 +19,11 @@ public class ClientServiceImpl implements ClientService{
     @Override
     public List<AdDto> getAllAds() {
         return adRepository.findAll().stream().map(Ad::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<AdDto> getAdById(Long id) {
+        return adRepository.findById(id)
+                .map(Ad::toDto);
     }
 }
