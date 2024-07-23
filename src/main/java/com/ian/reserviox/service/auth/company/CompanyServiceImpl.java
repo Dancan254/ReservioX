@@ -58,4 +58,15 @@ public class CompanyServiceImpl implements CompanyService{
         }
         return "Ad not found";
     }
+
+    @Override
+    public String deleteAd(Long id) {
+        return adRepository.findById(id)
+                .map(ad -> {
+                    adRepository.delete(ad);
+                    return "Ad deleted successfully";
+                })
+                .orElse("Ad not found");
+
+    }
 }

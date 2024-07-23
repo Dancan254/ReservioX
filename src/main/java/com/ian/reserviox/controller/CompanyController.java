@@ -52,4 +52,9 @@ public class CompanyController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse(false, "Error updating ad"));
         }
     }
+
+    @DeleteMapping("/ad/{companyId}")
+    public ResponseEntity<String> deleteAd(@PathVariable Long companyId) {
+        return ResponseEntity.ok(companyService.deleteAd(companyId));
+    }
 }

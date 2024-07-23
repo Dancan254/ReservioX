@@ -10,4 +10,5 @@ public interface CompanyService {
     List<AdDto> getAllAds(Long userId);
     AdDto getAdById(Long adId);
     String updateAd(Long id, AdDto updateDto) throws IOException;
+    String deleteAd(Long id);
 }
