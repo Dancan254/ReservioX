@@ -1,4 +1,4 @@
-package com.ian.reserviox.service.auth.jwt;
+package com.ian.reserviox.service.jwt;
 
 import com.ian.reserviox.entity.User;
 import com.ian.reserviox.repository.UserRepository;

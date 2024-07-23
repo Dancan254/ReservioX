@@ -1,4 +1,4 @@
-package com.ian.reserviox.service.auth.company;
+package com.ian.reserviox.service.company;
 
 import com.ian.reserviox.dto.AdDto;
 import com.ian.reserviox.entity.Ad;

@@ -2,7 +2,7 @@ package com.ian.reserviox.controller;
 
 import com.ian.reserviox.dto.AdDto;
 import com.ian.reserviox.response.ApiResponse;
-import com.ian.reserviox.service.auth.company.CompanyService;
+import com.ian.reserviox.service.company.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

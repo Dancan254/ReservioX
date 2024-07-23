@@ -1,6 +1,6 @@
 package com.ian.reserviox.config;
 
-import com.ian.reserviox.service.auth.jwt.JwtRequestFilter;
+import com.ian.reserviox.service.jwt.JwtRequestFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

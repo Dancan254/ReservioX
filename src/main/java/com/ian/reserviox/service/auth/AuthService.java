@@ -1,4 +1,4 @@
-package com.ian.reserviox.service.auth.auth;
+package com.ian.reserviox.service.auth;
 
 import com.ian.reserviox.dto.AuthenticationRequest;
 import com.ian.reserviox.dto.SignupRequestDto;

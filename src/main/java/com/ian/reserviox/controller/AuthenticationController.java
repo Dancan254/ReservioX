@@ -3,7 +3,7 @@ package com.ian.reserviox.controller;
 import com.ian.reserviox.dto.AuthenticationRequest;
 import com.ian.reserviox.dto.SignupRequestDto;
 import com.ian.reserviox.exception.InvalidCredentialsException;
-import com.ian.reserviox.service.auth.auth.AuthServiceImpl;
+import com.ian.reserviox.service.auth.AuthServiceImpl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.ian.reserviox.service.auth.auth;
+package com.ian.reserviox.service.auth;
 
 import com.ian.reserviox.dto.AuthenticationRequest;
 import com.ian.reserviox.dto.SignupRequestDto;
@@ -7,7 +7,7 @@ import com.ian.reserviox.entity.User;
 import com.ian.reserviox.enums.UserRole;
 import com.ian.reserviox.exception.InvalidCredentialsException;
 import com.ian.reserviox.repository.UserRepository;
-import com.ian.reserviox.service.auth.jwt.UserDetailsServiceImpl;
+import com.ian.reserviox.service.jwt.UserDetailsServiceImpl;
 import com.ian.reserviox.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
