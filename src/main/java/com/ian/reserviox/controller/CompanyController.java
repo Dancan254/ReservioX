@@ -53,8 +53,8 @@ public class CompanyController {
         }
     }
 
-    @DeleteMapping("/ad/{companyId}")
-    public ResponseEntity<String> deleteAd(@PathVariable Long companyId) {
-        return ResponseEntity.ok(companyService.deleteAd(companyId));
+    @DeleteMapping("/ad/{adId}")
+    public ResponseEntity<String> deleteAd(@PathVariable Long adId) {
+        return ResponseEntity.ok(companyService.deleteAd(adId));
     }
 }
