@@ -26,4 +26,11 @@ public class ClientServiceImpl implements ClientService{
         return adRepository.findById(id)
                 .map(Ad::toDto);
     }
+
+    @Override
+    public List<AdDto> searchAdByName(String name) {
+        return adRepository.findAllByServiceNameContaining(name)
+                .stream().map(Ad::toDto).collect(Collectors.toList());
+    }
+
 }

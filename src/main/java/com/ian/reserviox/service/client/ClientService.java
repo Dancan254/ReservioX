@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface ClientService {
     List<AdDto> getAllAds();
     Optional<AdDto> getAdById(Long id);
+    List<AdDto> searchAdByName(String name);
 }
