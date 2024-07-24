@@ -1,13 +1,11 @@
 package com.ian.reserviox.controller;
 
 import com.ian.reserviox.dto.AdDto;
+import com.ian.reserviox.dto.ReservationDTO;
 import com.ian.reserviox.service.client.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +35,15 @@ public class ClientController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No advertisements found by the name: " + name);
         } else {
             return ResponseEntity.ok(ads);
+        }
+    }
+    @GetMapping("/bookService")
+    public ResponseEntity<String> bookService(@RequestBody ReservationDTO reservationDTO) {
+        boolean isBooked = clientService.bookService(reservationDTO);
+        if (isBooked) {
+            return ResponseEntity.ok("Service booked successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to book service. Please try again.");
         }
     }
 }
