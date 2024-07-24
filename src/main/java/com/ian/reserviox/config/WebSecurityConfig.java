@@ -30,7 +30,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/auth/client/signup", "/auth/company/signup", "/auth/authenticate", "/h2-console/**").permitAll()
-                        .requestMatchers("/api/**").authenticated()
+                        .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable
                 )
