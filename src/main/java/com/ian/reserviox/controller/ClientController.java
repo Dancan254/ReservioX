@@ -1,5 +1,6 @@
 package com.ian.reserviox.controller;
 
+import com.ian.reserviox.dto.AdDetailsDTO;
 import com.ian.reserviox.dto.AdDto;
 import com.ian.reserviox.dto.ReservationDTO;
 import com.ian.reserviox.service.client.ClientService;
@@ -47,7 +48,7 @@ public class ClientController {
         }
     }
     @GetMapping("/ad/{adId}")
-    public ResponseEntity<?> getAdDetailsByAdId(@PathVariable Long adId) {
+    public ResponseEntity<AdDetailsDTO> getAdDetailsByAdId(@PathVariable Long adId) {
         return ResponseEntity.ok(clientService.getAdDetailsByAdId(adId));
     }
 }

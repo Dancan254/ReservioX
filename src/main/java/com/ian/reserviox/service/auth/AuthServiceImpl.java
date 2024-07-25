@@ -61,11 +61,14 @@ public class AuthServiceImpl implements AuthService {
 
     public String authenticateUser(AuthenticationRequest authenticationRequest) {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword())
+            );
         } catch (BadCredentialsException e) {
             throw new InvalidCredentialsException("Incorrect email or password");
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
-        return jwtUtil.generateToken(userDetails.getUsername());
+        User user = userRepository.findUserByEmail(authenticationRequest.getEmail());
+        return jwtUtil.generateToken(userDetails.getUsername(), user.getUserRole());
     }
 }

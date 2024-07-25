@@ -42,19 +42,17 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
             if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(email);
-                if (jwtUtil.validateToken(jwt, userDetails.getUsername())) { // Assuming validateToken now also takes UserDetails as parameter
+                if (jwtUtil.validateToken(jwt, userDetails.getUsername())) {
                     UsernamePasswordAuthenticationToken authenticationToken =
                             new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 }
-                filterChain.doFilter(request, response);
             }
         } catch (AuthenticationException e) {
             logger.error("Authentication exception: " + e.getMessage());
-            // Optionally set an error response status code and message
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Authentication Failed");
-            return; // Stop further filter chain execution
+            return;
         }
 
         filterChain.doFilter(request, response);
