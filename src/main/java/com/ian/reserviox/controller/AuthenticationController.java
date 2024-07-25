@@ -33,7 +33,7 @@ public class AuthenticationController {
         if(authService.isEmailAlreadyInUse(signupRequestDto.getEmail())){
             return ResponseEntity.badRequest().body("Email already in use");
         }
-        return ResponseEntity.ok(authService.signupClient(signupRequestDto));
+        return ResponseEntity.ok(authService.signupCompany(signupRequestDto));
     }
 
     @PostMapping("/login")

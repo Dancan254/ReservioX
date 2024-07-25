@@ -29,8 +29,11 @@ public class CompanyServiceImpl implements CompanyService{
             ad.setServiceName(adDto.getServiceName());
             ad.setDescription(adDto.getDescription());
             ad.setPrice(adDto.getPrice());
-            ad.setImage(adDto.getImage().getBytes());
+            if (adDto.getImage() != null) {
+                ad.setImage(adDto.getImage().getBytes());
+            }
             ad.setUser(optionalUser.get());
+            adRepository.save(ad);
             return true;
         }
         return false;
@@ -52,7 +55,9 @@ public class CompanyServiceImpl implements CompanyService{
             ad.setServiceName(updateDto.getServiceName());
             ad.setDescription(updateDto.getDescription());
             ad.setPrice(updateDto.getPrice());
-            ad.setImage(updateDto.getImage().getBytes());
+            if (updateDto.getImage() != null) {
+                ad.setImage(updateDto.getImage().getBytes());
+            }
             adRepository.save(ad);
             return "Ad updated successfully";
         }

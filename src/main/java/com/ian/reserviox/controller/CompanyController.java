@@ -31,12 +31,12 @@ public class CompanyController {
         return ResponseEntity.status(HttpStatus.OK).body(companyService.getAllAds(companyId));
     }
 
-    @GetMapping("/ad/{companyId}")
-    public ResponseEntity<?> getAdById(@PathVariable Long companyId){
-        if (companyService.getAdById(companyId) == null){
+    @GetMapping("/ad/{adID}")
+    public ResponseEntity<?> getAdById(@PathVariable Long adID){
+        if (companyService.getAdById(adID) == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        return ResponseEntity.status(HttpStatus.OK).body(companyService.getAdById(companyId));
+        return ResponseEntity.status(HttpStatus.OK).body(companyService.getAdById(adID));
     }
 
     @PutMapping("/ad/{companyId}")

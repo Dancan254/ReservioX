@@ -2,6 +2,7 @@ package com.ian.reserviox.entity;
 
 import com.ian.reserviox.dto.AdDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -13,8 +14,13 @@ public class Ad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String serviceName;
+
+    @NotNull
     private String description;
+
+    @NotNull
     private Double price;
 
     @Lob
@@ -29,7 +35,6 @@ public class Ad {
     //convert to dto
     public AdDto toDto() {
         AdDto adDto = new AdDto();
-        adDto.setId(this.id);
         adDto.setServiceName(this.serviceName);
         adDto.setDescription(this.description);
         adDto.setPrice(this.price);
