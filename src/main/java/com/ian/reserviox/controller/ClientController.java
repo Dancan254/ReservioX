@@ -46,4 +46,8 @@ public class ClientController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to book service. Please try again.");
         }
     }
+    @GetMapping("/ad/{adId}")
+    public ResponseEntity<?> getAdDetailsByAdId(@PathVariable Long adId) {
+        return ResponseEntity.ok(clientService.getAdDetailsByAdId(adId));
+    }
 }

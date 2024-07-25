@@ -1,5 +1,6 @@
 package com.ian.reserviox.service.client;
 
+import com.ian.reserviox.dto.AdDetailsDTO;
 import com.ian.reserviox.dto.AdDto;
 import com.ian.reserviox.dto.ReservationDTO;
 import com.ian.reserviox.entity.Ad;
@@ -63,4 +64,10 @@ public class ClientServiceImpl implements ClientService{
         return false;
     }
 
+    public AdDetailsDTO getAdDetailsByAdId(Long adId) {
+        Optional<Ad> optionalAd = adRepository.findById(adId);
+        AdDetailsDTO adDetailsDTO = new AdDetailsDTO();
+        optionalAd.ifPresent(ad -> adDetailsDTO.setAdDto(ad.toDto()));
+        return adDetailsDTO;
+    }
 }
