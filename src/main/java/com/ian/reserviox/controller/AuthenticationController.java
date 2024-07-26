@@ -24,14 +24,14 @@ public class AuthenticationController {
     @PostMapping("/client/signup")
     public ResponseEntity<?> signupClient(@RequestBody SignupRequestDto signupRequestDto){
         if(authService.isEmailAlreadyInUse(signupRequestDto.getEmail())){
-            return ResponseEntity.badRequest().body("Email already in use");
+            return ResponseEntity.badRequest().body("Email is already in use");
         }
         return ResponseEntity.ok(authService.signupClient(signupRequestDto));
     }
     @PostMapping("/company/signup")
     public ResponseEntity<?> signupCompany(@RequestBody SignupRequestDto signupRequestDto){
         if(authService.isEmailAlreadyInUse(signupRequestDto.getEmail())){
-            return ResponseEntity.badRequest().body("Email already in use");
+            return ResponseEntity.badRequest().body("Email is already in use");
         }
         return ResponseEntity.ok(authService.signupCompany(signupRequestDto));
     }
