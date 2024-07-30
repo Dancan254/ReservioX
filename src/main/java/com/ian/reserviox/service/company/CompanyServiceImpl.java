@@ -1,9 +1,12 @@
 package com.ian.reserviox.service.company;
 
 import com.ian.reserviox.dto.AdDto;
+import com.ian.reserviox.dto.ReservationDTO;
 import com.ian.reserviox.entity.Ad;
+import com.ian.reserviox.entity.Reservation;
 import com.ian.reserviox.entity.User;
 import com.ian.reserviox.repository.AdRepository;
+import com.ian.reserviox.repository.ReservationRepository;
 import com.ian.reserviox.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +19,12 @@ import java.util.stream.Collectors;
 public class CompanyServiceImpl implements CompanyService{
     private final UserRepository userRepository;
     private final AdRepository adRepository;
+    private final ReservationRepository reservationRepository;
 
-    public CompanyServiceImpl(UserRepository userRepository, AdRepository adRepository) {
+    public CompanyServiceImpl(UserRepository userRepository, AdRepository adRepository, ReservationRepository reservationRepository) {
         this.userRepository = userRepository;
         this.adRepository = adRepository;
+        this.reservationRepository = reservationRepository;
     }
 
     public Boolean postAd(Long userId, AdDto adDto) throws IOException {
@@ -69,5 +74,9 @@ public class CompanyServiceImpl implements CompanyService{
                 })
                 .orElse("Ad not found");
 
+    }
+
+    public List<ReservationDTO> getAllAddBookings(Long companyId){
+        return reservationRepository.findAllByCompanyId(companyId).stream().map(Reservation::toReservationDTO).collect(Collectors.toList());
     }
 }

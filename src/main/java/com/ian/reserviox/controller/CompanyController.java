@@ -1,6 +1,7 @@
 package com.ian.reserviox.controller;
 
 import com.ian.reserviox.dto.AdDto;
+import com.ian.reserviox.dto.ReservationDTO;
 import com.ian.reserviox.response.ApiResponse;
 import com.ian.reserviox.service.company.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/company")
@@ -56,5 +58,18 @@ public class CompanyController {
     @DeleteMapping("/ad/{adId}")
     public ResponseEntity<String> deleteAd(@PathVariable Long adId) {
         return ResponseEntity.ok(companyService.deleteAd(adId));
+    }
+
+    @GetMapping("/reservations/{companyId}")
+    public ResponseEntity<?> getAllAddBookings(@PathVariable Long companyId){
+        try {
+            List<ReservationDTO> reservationDTOS = companyService.getAllAddBookings(companyId);
+            if (reservationDTOS.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(reservationDTOS);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while fetching reservations");
+        }
     }
 }
