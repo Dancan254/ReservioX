@@ -2,6 +2,7 @@ package com.ian.reserviox.controller;
 
 import com.ian.reserviox.dto.AdDto;
 import com.ian.reserviox.dto.ReservationDTO;
+import com.ian.reserviox.enums.ReservationStatus;
 import com.ian.reserviox.response.ApiResponse;
 import com.ian.reserviox.service.company.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,20 @@ public class CompanyController {
             return ResponseEntity.status(HttpStatus.OK).body(reservationDTOS);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while fetching reservations");
+        }
+    }
+
+    @PutMapping("/booking/{bookingId}/{status}")
+    public ResponseEntity<?> changeBookingStatus(@PathVariable Long bookingId, @PathVariable String status) {
+        try {
+            ReservationStatus reservationStatus = ReservationStatus.valueOf(status.toUpperCase());
+            if (companyService.changeBookingStatus(bookingId, reservationStatus)) {
+                return ResponseEntity.status(HttpStatus.OK).body("Booking status updated successfully");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Booking not found");
+            }
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid status");
         }
     }
 }
