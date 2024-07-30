@@ -35,12 +35,12 @@ public class Ad {
     //convert to dto
     public AdDto toDto() {
         AdDto adDto = new AdDto();
-        adDto.setServiceName(this.serviceName);
-        adDto.setDescription(this.description);
-        adDto.setPrice(this.price);
-        adDto.setReturnedImg(this.image);
-        adDto.setUserId(this.user.getId());
-        adDto.setCompanyName(this.user.getFirstname());
+        adDto.setServiceName(serviceName);
+        adDto.setDescription(description);
+        adDto.setPrice(price);
+        adDto.setReturnedImg(image);
+        adDto.setUserId(user.getId());
+        adDto.setCompanyName(user.getFirstname());
         return adDto;
     }
 
