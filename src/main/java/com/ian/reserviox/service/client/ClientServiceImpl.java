@@ -70,4 +70,10 @@ public class ClientServiceImpl implements ClientService{
         optionalAd.ifPresent(ad -> adDetailsDTO.setAdDto(ad.toDto()));
         return adDetailsDTO;
     }
+
+    @Override
+    public List<ReservationDTO> getAllBookingByUserId(Long userId) {
+        return reservationRepository.findAllByUserId(userId)
+                .stream().map(Reservation::toReservationDTO).collect(Collectors.toList());
+    }
 }
